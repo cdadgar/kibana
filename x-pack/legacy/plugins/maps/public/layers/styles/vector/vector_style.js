@@ -312,7 +312,11 @@ export class VectorStyle extends AbstractStyle {
     );
   }
 
-  getLegendDetails(getFieldLabel, getFieldFormatter) {
+  getMap = () => {
+    return this.saved_mbMap;
+  }
+
+  getLegendDetails(getFieldLabel, getFieldFormatter, layerId) {
     const styles = this.getProperties();
     const styleProperties = Object.keys(styles).map(styleName => {
       const { type, options } = styles[styleName];
@@ -329,6 +333,8 @@ export class VectorStyle extends AbstractStyle {
         styleProperties={styleProperties}
         getFieldLabel={getFieldLabel}
         getFieldFormatter={getFieldFormatter}
+        getMap={this.getMap}
+        layerId={layerId}
       />
     );
   }
@@ -382,6 +388,7 @@ export class VectorStyle extends AbstractStyle {
   }
 
   setFeatureState(featureCollection, mbMap, sourceId) {
+    this.saved_mbMap = mbMap;
 
     if (!featureCollection) {
       return;

@@ -200,7 +200,7 @@ export class VectorLayer extends AbstractLayer {
       return await source.getFieldFormatter(field.name);
     };
 
-    return this._style.getLegendDetails(getFieldLabel, getFieldFormatter);
+    return this._style.getLegendDetails(getFieldLabel, getFieldFormatter, this.getId());
   }
 
   _getBoundsBasedOnData() {
