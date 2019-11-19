@@ -243,7 +243,7 @@ export class AbstractESSource extends AbstractVectorSource {
     });
 
     // Do not use field formatters for counting metrics
-    if (metricField && metricField.type === METRIC_TYPE.COUNT || metricField.type === METRIC_TYPE.UNIQUE_COUNT) {
+    if (metricField && (metricField.type === METRIC_TYPE.COUNT || metricField.type === METRIC_TYPE.UNIQUE_COUNT)) {
       return null;
     }
 
